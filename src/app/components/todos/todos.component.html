@@ -1,0 +1,33 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand">Your To-Do List</a>
+    <form class="form-inline" (submit)="addTodo()">
+      <input 
+        class="form-control mr-sm-2" 
+        name="inputTodo"
+        type="text" 
+        placeholder="Enter..." 
+        aria-label="Add"
+        [(ngModel)]="inputTodo"
+      />
+      <!-- <input type="submit" value="Add Todo" class="todo-submit"> -->
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add</button>
+    </form>
+  </nav>
+<table class="table">
+<thead class="thead-light">
+    <tr>
+    <th scope="col">#</th>
+    <th scope="col"></th>
+    <th scope="col">Event</th>
+    <!-- <th scope="col">Handle</th> -->
+    </tr>
+</thead>
+<tbody *ngFor="let todo of todos; let i = index;" class="todo {{ (todo.completed ? 'done' :  '') }}">
+    <tr>
+    <th scope="row">{{ i }}</th>
+    <td><button type="button" (click)="deleteTodo(i)" class="btn btn-danger">Remove</button></td>
+    <td class="content"(click)="toggleDone(i)">{{ todo.content }}</td>
+    <!-- <td>@mdo</td> -->
+    </tr>
+</tbody>
+</table>
